@@ -70,8 +70,8 @@ def stable_diffusion_pipeline(p):
     pipeline = p.diffuser.from_pretrained(
         p.model,
         torch_dtype=p.dtype,
-        revision=p.revision,
-        use_auth_token=p.token,
+        revision=p.revision
+#        use_auth_token=p.token,
     ).to(p.device)
 
     if p.skip:
@@ -198,7 +198,7 @@ def main():
         "--model",
         type=str,
         nargs="?",
-        default="CompVis/stable-diffusion-v1-4",
+        default="./models/model.ckpt",
         help="The model used to render images",
     )
     parser.add_argument(
